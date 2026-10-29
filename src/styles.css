@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+/* Status palette shared by canvas, pills and log rows. */
+@theme {
+  --color-idle: #6b7280;
+  --color-running: #38bdf8;
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+  --color-skipped: #52525b;
+  --color-pruned: #f59e0b;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #0b0b0f;
+  color: #e7e7ea;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Running nodes pulse so two parallel branches visibly run at the same time. */
+@keyframes strand-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12), 0 0 14px rgba(56, 189, 248, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(56, 189, 248, 0.06), 0 0 30px rgba(56, 189, 248, 0.55);
+  }
+}
+
+.strand-running {
+  animation: strand-pulse 1.1s ease-in-out infinite;
+}
+
+/* Animated dash on edges carrying data. */
+@keyframes strand-flow {
+  to { stroke-dashoffset: -22; }
+}
+
+.strand-edge-active {
+  stroke-dasharray: 6 5;
+  animation: strand-flow 0.8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strand-running,
+  .strand-edge-active { animation: none; }
+}
+
+/* Dotted canvas backdrop. */
+.strand-canvas {
+  background-image: radial-gradient(circle, #23232d 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Thin scrollbars for the dense side panels. */
+.strand-scroll::-webkit-scrollbar { width: 9px; height: 9px; }
+.strand-scroll::-webkit-scrollbar-track { background: transparent; }
+.strand-scroll::-webkit-scrollbar-thumb {
+  background: #2a2a35;
+  border-radius: 999px;
+}
+.strand-scroll::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
