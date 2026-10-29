@@ -1,0 +1,29 @@
+{
+  "name": "strand",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Strand — a browser-native workflow execution engine with a live DAG playground.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json --noEmit && vite build",
+    "preview": "vite preview",
+    "serve:public": "vite preview --port 12000 --host 0.0.0.0",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "engine:demo": "tsx src/workflow-engine.ts"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3"
+  }
+}
